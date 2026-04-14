@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0F1730; font-family: 'Cairo', sans-serif; color: #fff; direction: rtl; }
+  .page { max-width: 680px; margin: 0 auto; padding: 32px 20px 48px; }
+
+  .header { text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid rgba(212,175,55,0.3); }
+  .brand-tag { display: inline-block; background: rgba(212,175,55,0.12); border: 1px solid rgba(212,175,55,0.4); color: #D4AF37; font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 20px; letter-spacing: 1px; margin-bottom: 16px; }
+  .main-title { font-size: 26px; font-weight: 900; color: #fff; line-height: 1.5; margin-bottom: 8px; }
+  .main-title span { color: #D4AF37; }
+  .subtitle { font-size: 14px; color: #C0C0C0; line-height: 1.7; margin-top: 10px; }
+
+  .script-bubble { background: #111828; border-right: 4px solid #D4AF37; border-radius: 0 12px 12px 0; padding: 16px 20px; margin-bottom: 24px; font-size: 15px; color: #fff; line-height: 1.8; }
+
+  .section-card { background: #111828; border-radius: 14px; padding: 20px; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .section-card::before { content: ''; position: absolute; top: 0; right: 0; width: 3px; height: 100%; background: linear-gradient(to bottom, #D4AF37, #B8941E); }
+  .section-number { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.5); border-radius: 50%; color: #D4AF37; font-weight: 700; font-size: 14px; margin-left: 10px; flex-shrink: 0; }
+  .section-header { display: flex; align-items: center; margin-bottom: 14px; }
+  .section-title { font-size: 17px; font-weight: 700; color: #D4AF37; flex: 1; }
+  .section-body { font-size: 14px; color: #C0C0C0; line-height: 1.9; }
+  .section-body strong { color: #fff; font-weight: 600; }
+
+  .pause-box { background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.35); border-radius: 10px; padding: 12px 16px; margin-top: 14px; display: flex; align-items: flex-start; gap: 10px; }
+  .pause-icon { font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .pause-text { font-size: 13px; color: #D4AF37; font-weight: 600; line-height: 1.7; }
+
+  .example-box { background: #0B1020; border-top: 3px solid #D4AF37; border-radius: 0 0 10px 10px; padding: 14px 16px; margin-top: 14px; }
+  .example-label { font-size: 11px; color: #D4AF37; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; text-transform: uppercase; }
+  .example-text { font-size: 13px; color: #C0C0C0; line-height: 1.8; font-style: italic; }
+
+  .alert-box { background: rgba(212,175,55,0.07); border: 1px solid rgba(212,175,55,0.25); border-radius: 10px; padding: 14px 16px; margin-top: 14px; display: flex; gap: 10px; align-items: flex-start; }
+  .alert-icon { color: #D4AF37; font-size: 18px; flex-shrink: 0; }
+  .alert-content { font-size: 13px; color: #C0C0C0; line-height: 1.8; }
+  .alert-content strong { color: #fff; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag { background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.3); color: #D4AF37; font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+
+  .gold-divider { height: 1px; background: linear-gradient(to left, transparent, rgba(212,175,55,0.5), transparent); margin: 32px 0; }
+
+  /* ===== WORKSHOP SECTION ===== */
+  .workshop-hero { text-align: center; margin-bottom: 28px; }
+  .workshop-badge { display: inline-block; background: #D4AF37; color: #0F1730; font-size: 12px; font-weight: 900; padding: 6px 18px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 1px; }
+  .workshop-title { font-size: 24px; font-weight: 900; color: #fff; line-height: 1.5; margin-bottom: 8px; }
+  .workshop-title span { color: #D4AF37; }
+  .workshop-subtitle { font-size: 14px; color: #C0C0C0; line-height: 1.7; }
+
+  .problem-card { background: #0B1020; border: 1px solid rgba(192,192,192,0.15); border-radius: 14px; padding: 20px; margin-bottom: 20px; }
+  .problem-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+  .problem-items { list-style: none; }
+  .problem-items li { font-size: 13px; color: #C0C0C0; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px; }
+  .problem-items li:last-child { border-bottom: none; }
+  .problem-items li::before { content: ''; width: 6px; height: 6px; background: rgba(212,175,55,0.5); border-radius: 50%; flex-shrink: 0; }
+
+  .frameworks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+  .framework-item { background: #0B1020; border: 1px solid rgba(212,175,55,0.2); border-radius: 10px; padding: 10px 14px; }
+  .framework-name { font-size: 13px; font-weight: 700; color: #D4AF37; margin-bottom: 2px; }
+  .framework-desc { font-size: 11px; color: #C0C0C0; }
+
+  .details-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
+  .detail-box { background: #111828; border: 1px solid rgba(212,175,55,0.25); border-radius: 12px; padding: 14px 10px; text-align: center; }
+  .detail-icon { font-size: 22px; margin-bottom: 6px; }
+  .detail-val { font-size: 15px; font-weight: 700; color: #D4AF37; margin-bottom: 2px; }
+  .detail-lbl { font-size: 11px; color: #C0C0C0; }
+
+  .price-card { background: linear-gradient(135deg, #111828 0%, #0B1020 100%); border: 1px solid rgba(212,175,55,0.5); border-radius: 16px; padding: 24px 20px; margin: 20px 0; text-align: center; position: relative; overflow: hidden; }
+  .price-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, #B8941E, #D4AF37, #B8941E); }
+  .price-old { font-size: 14px; color: #C0C0C0; text-decoration: line-through; margin-bottom: 4px; }
+  .price-new { font-size: 36px; font-weight: 900; color: #D4AF37; margin-bottom: 4px; }
+  .price-occasion { font-size: 13px; color: #C0C0C0; }
+  .price-divider { width: 60px; height: 1px; background: rgba(212,175,55,0.4); margin: 14px auto; }
+  .bonuses { text-align: right; }
+  .bonus-item { font-size: 13px; color: #C0C0C0; padding: 5px 0; display: flex; align-items: center; gap: 8px; }
+  .bonus-item span { color: #D4AF37; font-weight: 700; }
+
+  .audience-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .audience-tag { background: #111828; border: 1px solid rgba(212,175,55,0.25); color: #C0C0C0; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px; }
+
+  .cta-box { background: linear-gradient(135deg, #111828 0%, #0B1020 100%); border: 1px solid rgba(212,175,55,0.45); border-radius: 16px; padding: 24px 20px; text-align: center; margin-top: 32px; position: relative; overflow: hidden; }
+  .cta-box::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, #B8941E, #D4AF37, #B8941E); }
+  .cta-title { font-size: 18px; font-weight: 700; color: #D4AF37; margin-bottom: 10px; }
+  .cta-text { font-size: 14px; color: #C0C0C0; line-height: 1.8; margin-bottom: 14px; }
+  .cta-highlight { font-size: 13px; color: #D4AF37; font-weight: 600; background: rgba(212,175,55,0.08); border: 1px dashed rgba(212,175,55,0.4); border-radius: 8px; padding: 10px 16px; line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ===== AD ANALYSIS SECTION ===== -->
+  <div class="header">
+    <div class="brand-tag">تحليل إعلان • Google Pixel 2025</div>
+    <div class="main-title">تخيل إعلان… قدر يبكي<br><span>ملايين الناس</span> 😢</div>
+    <div class="subtitle">مش إعلان Gemini AI عادي… ده إعلان بيظهر قوة السرد القصصي<br>وقدرته على توصيل الجمهور للمشاعر وربطه بالمنتج</div>
+  </div>
+
+  <div class="script-bubble">
+    🎬 وده كان رأي المسوقين عن إعلان Google Pixel 2025 — إعلان واحد غيّر نظرة الملايين على AI مش كتقنية… لكن كمرافق إنساني حقيقي.
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-number">1</span><div class="section-title">Hook — خطاف العاطفة</div></div>
+    <div class="section-body">الإعلان بدأ <strong>كأنك بتشوف مقابلة شغل عادية</strong>، الأب بيتدرب وAI Gemini بيساعده — لكن على طول بتحس إن في حاجة أكبر بتحصل. الفضول + التعاطف = <strong>Hook عاطفي فوري</strong></div>
+    <div class="pause-box"><span class="pause-icon">⏸️</span><div class="pause-text">الدرس: مش لازم تبدأ الإعلان بالمنتج — ابدأ بالإنسان والموقف</div></div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-number">2</span><div class="section-title">بناء القصة — Story Build-Up</div></div>
+    <div class="section-body">كل إجابة في الانترفيو = موقف من حياته اليومية:</div>
+    <div class="tags">
+      <span class="tag">Multitasking: شغل + أطفال</span>
+      <span class="tag">Collaboration: مع الأسرة</span>
+      <span class="tag">Decision Making: كل لحظة اختبار</span>
+    </div>
+    <div class="example-box">
+      <div class="example-label">المثال التطبيقي</div>
+      <div class="example-text">كل مشهد بيحول مهارات الأبوة لمهارات مهنية بدون ما يقولها صراحة — استخدم Show, don't tell</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-number">3</span><div class="section-title">تصعيد الأحداث — Escalation</div></div>
+    <div class="section-body">الأب بيواجه مواقف صعبة، يتعلم من أخطائه، يظهر كل يوم مهما حصل 💪 — كل لحظة ضغط أو تعب، كل ابتسامة لأولاده… كل ده بيخلي المشاهد يحس القصة <strong>داخله</strong></div>
+    <div class="alert-box"><span class="alert-icon">!</span><div class="alert-content">التفصيل في التفاصيل اليومية يعطي <strong>مصداقية وعمق عاطفي</strong> — المشاهد بيشوف نفسه في الأب</div></div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-number">4</span><div class="section-title">الذروة العاطفية — Climax</div></div>
+    <div class="section-body">هنا الإعلان وصل للمشاعر مباشرة… دموع وتأثر بدون أي كلام تسويقي صريح</div>
+    <div class="script-bubble" style="margin-top:12px; margin-bottom:0;">"أهم حاجة؟ أظهر كل يوم… مهما حصل"<br>"أعرف إن الناس يقدروا يعتمدوا عليّ… وأنا أقدر أعتمد عليهم" ❤️</div>
+    <div class="pause-box"><span class="pause-icon">⏸️</span><div class="pause-text">Emotional Payoff هو أقوى سلاح في Storytelling</div></div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-number">5</span><div class="section-title">ربط المنتج بالرحلة — Product Integration</div></div>
+    <div class="section-body"><strong>Gemini AI</strong> و<strong>Google Pixel</strong> مش البطل — بس مساعد ذكي في الرحلة:</div>
+    <div class="tags">
+      <span class="tag">يساعد الأب يتدرب</span>
+      <span class="tag">يحسن من أدائه</span>
+      <span class="tag">جزء طبيعي من الحياة</span>
+    </div>
+    <div class="example-box">
+      <div class="example-label">الدرس الذهبي</div>
+      <div class="example-text">المنتج يظهر بطريقة غير مباشرة — Selling without selling</div>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-number">6</span><div class="section-title">الـ Takeaways التسويقية</div></div>
+    <div class="section-body">أبرز دروس الإعلان اللي تنفعك في أي حملة:</div>
+    <div class="tags" style="margin-top:12px;">
+      <span class="tag">بيع الهُوية مش المنتج</span>
+      <span class="tag">Emotional + Logical Balance</span>
+      <span class="tag">Anti-selling Technique</span>
+      <span class="tag">كل مشهد عنده درس</span>
+    </div>
+  </div>
+
+  <div class="section-card">
+    <div class="section-header"><span class="section-number">7</span><div class="section-title">الدرس العملي لأي حملة</div></div>
+    <div class="section-body">لو عايز إعلان يبني علاقة قوية مع الجمهور:</div>
+    <div class="alert-box" style="margin-top:12px; flex-direction:column; gap:8px;">
+      <div class="alert-content">✦ ابدأ بالإنسان والموقف</div>
+      <div class="alert-content">✦ صعد الأحداث تدريجيًا</div>
+      <div class="alert-content">✦ خلي المشاهد يعيش المشاعر</div>
+      <div class="alert-content">✦ اربط المنتج كأداة داعمة، مش البطل</div>
+      <div class="alert-content">✦ CTA خفيف/ناعم — الهدف الأول <strong>Emotional Connection</strong></div>
+    </div>
+  </div>
+
+  <!-- ===== SEPARATOR ===== -->
+  <div class="gold-divider"></div>
+
+  <!-- ===== WORKSHOP SECTION ===== -->
+  <div class="workshop-hero">
+    <div class="workshop-badge">🎓 الورشة الجديدة</div>
+    <div class="workshop-title">احتراف السرد القصصي<br><span>التسويقي</span></div>
+    <div class="workshop-subtitle">10 Storytelling Frameworks لرفع الـ Engagement والـ Conversion<br>من Content عادي إلى Content بيبيع</div>
+  </div>
+
+  <!-- Problem -->
+  <div class="section-card">
+    <div class="section-header"><div class="section-title" style="margin-right:0;">🔴 المشكلة اللي بتعاني منها؟</div></div>
+    <div class="section-body">بتنزل Content بشكل مستمر لكن:</div>
+    <div style="margin-top:12px;">
+      <ul class="problem-items">
+        <li>الـ Engagement ضعيف</li>
+        <li>الـ Reach موجود بس مفيش Action</li>
+        <li>الـ Conversion شبه معدوم</li>
+      </ul>
+    </div>
+    <div class="pause-box" style="margin-top:14px;"><span class="pause-icon">⏸️</span><div class="pause-text">السبب: أغلب المحتوى بيعتمد على Information مش Emotion — وده بيعني في عالم Performance Marketing: مفيش Return</div></div>
+  </div>
+
+  <!-- Frameworks -->
+  <div class="section-card">
+    <div class="section-header"><div class="section-title" style="margin-right:0;">⚡ هتتعلم 10 Frameworks أساسية</div></div>
+    <div class="section-body">مستخدمة في Copywriting, Ads, Landing Pages, Social Media</div>
+    <div class="frameworks-grid">
+      <div class="framework-item"><div class="framework-name">PAS</div><div class="framework-desc">Problem – Agitate – Solve</div></div>
+      <div class="framework-item"><div class="framework-name">BAB</div><div class="framework-desc">Before – After – Bridge</div></div>
+      <div class="framework-item"><div class="framework-name">Hook – Story – Offer</div><div class="framework-desc">للـ Ads والـ Reels</div></div>
+      <div class="framework-item"><div class="framework-name">StoryBrand</div><div class="framework-desc">Framework احترافي</div></div>
+      <div class="framework-item"><div class="framework-name">Three-Act Structure</div><div class="framework-desc">هيكل السينما الكلاسيكي</div></div>
+      <div class="framework-item"><div class="framework-name">Pixar Formula</div><div class="framework-desc">قصص تحرك المشاعر</div></div>
+      <div class="framework-item"><div class="framework-name">Hero's Journey</div><div class="framework-desc">أقوى هيكل سردي</div></div>
+      <div class="framework-item"><div class="framework-name">Five-Act + Narrative</div><div class="framework-desc">للحملات الضخمة</div></div>
+    </div>
+  </div>
+
+  <!-- Details -->
+  <div class="details-row">
+    <div class="detail-box"><div class="detail-icon">📅</div><div class="detail-val">شهر</div><div class="detail-lbl">مدة الورشة</div></div>
+    <div class="detail-box"><div class="detail-icon">🎙️</div><div class="detail-val">4</div><div class="detail-lbl">سيشنات مباشرة</div></div>
+    <div class="detail-box"><div class="detail-icon">⏱️</div><div class="detail-val">2h</div><div class="detail-lbl">كل سيشن</div></div>
+    <div class="detail-box"><div class="detail-icon">🏋️</div><div class="detail-val">أسبوع</div><div class="detail-lbl">تدريب عملي</div></div>
+  </div>
+
+  <!-- Price -->
+  <div class="price-card">
+    <div class="price-old">السعر الأصلي 1500 جنيه</div>
+    <div class="price-new">450 جنيه</div>
+    <div class="price-occasion">🌙 عرض خاص بمناسبة رمضان</div>
+    <div class="price-divider"></div>
+    <div class="bonuses">
+      <div class="bonus-item"><span>✦</span> صلاحية الوصول لكورسين السرد القصصي السابقين</div>
+      <div class="bonus-item"><span>✦</span> خصومات على الورش القادمة</div>
+      <div class="bonus-item"><span>✦</span> كوميونتي خاص للمشتركين</div>
+    </div>
+  </div>
+
+  <!-- Audience -->
+  <div class="section-card">
+    <div class="section-header"><div class="section-title" style="margin-right:0;">🎯 الورشة مناسبة لمين؟</div></div>
+    <div class="audience-tags">
+      <span class="audience-tag">Content Creators</span>
+      <span class="audience-tag">Media Buyers</span>
+      <span class="audience-tag">Copywriters</span>
+      <span class="audience-tag">Brand Builders</span>
+      <span class="audience-tag">Freelancers في الماركتنج</span>
+      <span class="audience-tag">أي حد شغال على Growth</span>
+    </div>
+    <div class="example-box" style="margin-top:16px;">
+      <div class="example-label">النتيجة النهائية</div>
+      <div class="example-text">هتتحول من Content Creator → Conversion-focused Marketer<br>ومن Writing عادي → Performance Writing</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-title">جاهز تبدأ تشتغل بشكل مختلف؟</div>
+    <div class="cta-text">مش Content أكتر… لكن Content بيحقق Results<br><strong style="color:#D4AF37;">Story = Strategy &nbsp;|&nbsp; Writing = Performance &nbsp;|&nbsp; Content = Conversion</strong></div>
+    <div class="cta-highlight">اكتب <strong>مهتم</strong> في التعليقات والتيم هيبعتلك كل التفاصيل 👇</div>
+  </div>
+
+</div>
+</body>
+</html>
